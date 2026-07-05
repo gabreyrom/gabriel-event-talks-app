@@ -20,6 +20,9 @@ const searchInput = document.getElementById('search-input');
 const typeFilter = document.getElementById('type-filter');
 const sortFilter = document.getElementById('sort-filter');
 const exportCsvBtn = document.getElementById('export-csv-btn');
+const themeToggleBtn = document.getElementById('theme-toggle-btn');
+const themeSunIcon = document.querySelector('.theme-sun');
+const themeMoonIcon = document.querySelector('.theme-moon');
 
 // Stats Elements
 const statTotal = document.getElementById('stat-total');
@@ -49,6 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
         progressCircle.style.strokeDasharray = CIRCLE_CIRCUMFERENCE;
         progressCircle.style.strokeDashoffset = CIRCLE_CIRCUMFERENCE;
     }
+    
+    // Initialize Theme
+    initTheme();
     
     fetchReleaseNotes();
     setupEventListeners();
@@ -591,6 +597,39 @@ function exportToCSV() {
     }
 }
 
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    if (savedTheme === 'light') {
+        document.body.classList.remove('dark-theme');
+        document.body.classList.add('light-theme');
+        themeSunIcon.classList.remove('hidden');
+        themeMoonIcon.classList.add('hidden');
+    } else {
+        document.body.classList.remove('light-theme');
+        document.body.classList.add('dark-theme');
+        themeSunIcon.classList.add('hidden');
+        themeMoonIcon.classList.remove('hidden');
+    }
+}
+
+function toggleTheme() {
+    if (document.body.classList.contains('light-theme')) {
+        document.body.classList.remove('light-theme');
+        document.body.classList.add('dark-theme');
+        localStorage.setItem('theme', 'dark');
+        themeSunIcon.classList.add('hidden');
+        themeMoonIcon.classList.remove('hidden');
+        showToast('Swapped to dark theme!', 'info');
+    } else {
+        document.body.classList.remove('dark-theme');
+        document.body.classList.add('light-theme');
+        localStorage.setItem('theme', 'light');
+        themeSunIcon.classList.remove('hidden');
+        themeMoonIcon.classList.add('hidden');
+        showToast('Swapped to light theme!', 'info');
+    }
+}
+
 /* --- EVENT LISTENERS --- */
 function setupEventListeners() {
     // Refresh & Retry Click Handlers
@@ -602,6 +641,7 @@ function setupEventListeners() {
     typeFilter.addEventListener('change', applyFilters);
     sortFilter.addEventListener('change', applyFilters);
     exportCsvBtn.addEventListener('click', exportToCSV);
+    themeToggleBtn.addEventListener('click', toggleTheme);
     
     // Modal controls
     closeModalBtn.addEventListener('click', closeTweetModal);

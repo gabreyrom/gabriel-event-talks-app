@@ -51,6 +51,74 @@
     --font-mono: 'JetBrains Mono', monospace;
 }
 
+/* --- LIGHT THEME OVERRIDES --- */
+body.light-theme {
+    --bg-dark: #f8fafc;
+    --bg-card: rgba(255, 255, 255, 0.7);
+    --bg-card-hover: rgba(255, 255, 255, 0.9);
+    --bg-input: rgba(241, 245, 249, 0.85);
+    --border-color: rgba(15, 23, 42, 0.08);
+    --border-hover: rgba(59, 130, 246, 0.45);
+    
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    
+    --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+    --shadow-md: 0 8px 32px 0 rgba(15, 23, 42, 0.08);
+    --shadow-lg: 0 12px 48px 0 rgba(15, 23, 42, 0.15);
+}
+
+body.light-theme .bg-glow {
+    opacity: 0.06;
+}
+
+body.light-theme .logo-icon-wrapper {
+    background: rgba(15, 23, 42, 0.02);
+    border-color: rgba(15, 23, 42, 0.06);
+}
+
+body.light-theme .btn-secondary {
+    background-color: rgba(15, 23, 42, 0.04);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+body.light-theme .btn-secondary:hover {
+    background-color: rgba(15, 23, 42, 0.08);
+    border-color: var(--text-muted);
+}
+
+body.light-theme .x-preview-card {
+    background-color: #f7f9f9;
+    border-color: #eff3f4;
+}
+
+body.light-theme .preview-name {
+    color: #0f1419;
+}
+
+body.light-theme .preview-text {
+    color: #0f1419;
+}
+
+body.light-theme .preview-card-attachment {
+    border-color: #eff3f4;
+}
+
+body.light-theme .preview-attachment-title {
+    color: #0f1419;
+}
+
+body.light-theme .preview-attachment-img {
+    background-color: #f1f5f9;
+}
+
+.btn-icon-only {
+    padding: 0.625rem;
+    border-radius: 50%;
+}
+
 /* --- BASE STYLES --- */
 * {
     box-sizing: border-box;
